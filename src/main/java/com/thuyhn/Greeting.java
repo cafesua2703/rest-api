@@ -1,4 +1,7 @@
-package com.example.restservice;
+/**
+ * Copyright (c) Elastic Path Software Inc., 2018
+ */
+package com.thuyhn;
 
 import org.json.simple.JSONObject;
 
@@ -7,8 +10,13 @@ import org.json.simple.JSONObject;
  */
 public class Greeting {
 
+	/** The token. */
 	private final String token;
+	
+	/** The data. */
 	private final JSONObject data;
+	
+	/** The decrypt. */
 	private final JSONObject decrypt;
 
 	/**

@@ -1,4 +1,4 @@
-package com.example.restservice.constant;
+package com.thuyhn.constant;
 
 public class Constant {
 

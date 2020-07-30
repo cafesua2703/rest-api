@@ -1,6 +1,5 @@
-package com.example.restservice;
+package com.thuyhn.controller;
 
-import com.example.restservice.constant.Constant;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
@@ -23,14 +22,25 @@ import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.thuyhn.Greeting;
+import com.thuyhn.constant.Constant;
+import com.thuyhn.domain.Customer;
+
+import repository.CustomerRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.ui.Model;
 
 /**
  * The type Greeting controller.
  */
-@RestController public class GreetingController {
-
+@RestController 
+public class GreetingController {
+    
     private final AtomicLong counter = new AtomicLong();
+    
 
     /**
      * Greeting greeting.

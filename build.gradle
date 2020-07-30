@@ -1,22 +1,54 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id 'org.springframework.boot' version '2.3.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 }
 
-group = 'com.example'
+group = 'com.thuyhn'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+	implementation('org.springframework.boot:spring-boot-starter-thymeleaf'){
+    exclude module: "logback-classic"
+}
+	implementation('org.springframework.boot:spring-boot-starter-web'){
+    exclude module: "logback-classic"
+}
+	implementation('org.springframework.boot:spring-boot-starter-data-mongodb'){
+    exclude module: "logback-classic"
+}
+	developmentOnly('org.springframework.boot:spring-boot-devtools'){
+    exclude module: "logback-classic"
+}
+	
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'com.sikulix:sikulixapi:2.0.4'
+	//implementation 'org.seleniumhq.selenium:selenium-java:3.+'
+	implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-6'
+
+	implementation 'org.apache.poi:poi-ooxml:4.1.2'
+	implementation 'ru.yandex.qatools.ashot:ashot:1.5.4'
+	
+	//compile group: 'com.sikulix', name: 'sikulixapi', version: '2.0.4'
+	//compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.+'
+	//compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+	//compile group: 'org.apache.poi', name: 'poi', version: '4.1.2'
+	//compile group: 'ru.yandex.qatools.ashot', name: 'ashot', version: '1.5.4'
+	
+	
+	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
