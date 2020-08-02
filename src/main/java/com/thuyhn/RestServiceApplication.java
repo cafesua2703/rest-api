@@ -8,7 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.ui.Model;
@@ -24,7 +26,7 @@ import com.thuyhn.files.StorageService;
 @EnableAutoConfiguration
 @EnableMongoRepositories(basePackageClasses=CustomerRepository.class)
 @EnableConfigurationProperties(StorageProperties.class)
-public class RestServiceApplication //{
+public class RestServiceApplication extends SpringBootServletInitializer  //{
 implements CommandLineRunner {
     
     /** The repository. */
@@ -38,6 +40,11 @@ implements CommandLineRunner {
     private StorageService storageService;
     
     private Model model;
+    
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+      return application.sources(RestServiceApplication.class);
+    }
 
     /**
      * The main method.
