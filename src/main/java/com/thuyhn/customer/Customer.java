@@ -1,4 +1,4 @@
-package com.thuyhn.domain;
+package com.thuyhn.customer;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

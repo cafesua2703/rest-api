@@ -1,4 +1,4 @@
-package com.thuyhn.controller;
+package com.thuyhn.restapi;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -24,10 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thuyhn.Greeting;
-import com.thuyhn.constant.Constant;
-import com.thuyhn.domain.Customer;
-
-import repository.CustomerRepository;
+import com.thuyhn.customer.Customer;
+import com.thuyhn.customer.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;

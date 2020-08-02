@@ -232,7 +232,7 @@ public class TestSpringBoot{
 			}
 			//setObj.utilityFilePath = sheet.getRow(19).getCell(1).getStringCellValue();
 
-			if(sheet.getRow(1).getCell(1).getCellType()==CellType.STRING)	{
+			if(sheet.getRow(1).getCell(1).getCellType()==CellType.BLANK)	{
 				testSuite ="";
 			}else if(sheet.getRow(1).getCell(1).getCellType()==CellType.NUMERIC){
 			double	password1 = sheet.getRow(1).getCell(1).getNumericCellValue();
@@ -2377,9 +2377,7 @@ public class TestSpringBoot{
 			}
 
 		} catch (Exception e1) {
-			System.out
-					.println("Report will not be printed. Check the file path.  "
-							+ e1);
+			LOGGER.log(Level.SEVERE,e1.toString());
 		}
 
 	}
@@ -6839,8 +6837,9 @@ return elem;
 	}
 	
 	public static void waitClickImage(String path, Screen screen) throws FindFailed {
-		screen.wait(path, 20);
-		if(screen.exists(path) != null) {
+		Pattern pattern = new Pattern(path);
+		screen.wait(pattern, 20);
+		if(screen.exists(pattern) != null) {
         	screen.click();
         }
 	}

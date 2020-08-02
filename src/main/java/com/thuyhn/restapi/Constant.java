@@ -1,4 +1,4 @@
-package com.thuyhn.constant;
+package com.thuyhn.restapi;
 
 public class Constant {
 

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Reprot Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <spring:url value="/resources/core/css/styles.css" var="coreCss" />
+        <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" /> -->
+<link href="./core/css/styles.css" rel="stylesheet" />
+<link href="./core/css/bootstrap.min.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="./core/js/index.js"></script>
+<script src="./core/js/bootstrap.min.js"></script>
+
+<!-- Internet Explorer HTML5 enabling script: -->
+<!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<script>
+	$(function() {
+		$("#header").load("header.html");
+		$("#footer").load("footer.html");
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		displayObj();
+	});
+</script>
+</head>
+<!--  <%@include file='template/header.html'%> -->
+<body>
+	<div id="header"></div>
+	<section>
+		<article id="article1">
+		<h2 th:text="'Test by ' + ${user} " ></h2>
+			<div align="center">
+				<h2>Save file</h2>
+				<form method="post" action="doUpload" enctype="multipart/form-data">
+					<table border="0">
+						<tr>
+							<td>Pick file #1:</td>
+							<td><input class="button" type="file" name="uploadFile"
+								size="50" /></td>
+						</tr>
+						<tr>
+							<td>Pick file #2:</td>
+							<td><input class="button" type="file" name="uploadFile"
+								size="50" /></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><input class="button"
+								type="submit" value="Upload" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<p>Report:
+			<h3>
+				<a th:text="${htmlname}" target="_blank" th:href="'./Report/'+${htmlname}">${htmlname}</a>
+			</h3>
+			</p>
+			<p>
+			<div th:text="${objImage}" style="display: none" id="obj">${objImage}</div>
+			Screenshot:
+			<div id="result"></div>
+			<div id="image"></div>
+		</article>
+	</section>
+	<hidden th:value="${bw}" id="bw" value="${bw}"></hidden>
+	<hidden th:value="${bw1}" id="bw1" value="${bw1}"></hidden>
+	<hidden th:value="${bw1}" id="bw1" value="${bw1}"></hidden>
+	<hidden th:value="${htmlname}" id="htmlname" value="${htmlname}"></hidden>
+	<input th:text="${listImage}" type="hidden" id="listImage" value="${listImage}" />
+	<input th:text="${listImage2}" type="hidden" id="listImage2" value="${listImage2}" />
+	<input th:text="${listReport}" type="hidden" id="listReport" value="${listReport}" />
+	<input th:text="${objImage}" type="hidden" id="objImage" data="${objImage}" />
+
+	<div id="footer"></div>
+</body>
+
+</html>

@@ -1,12 +1,91 @@
 <!DOCTYPE HTML>
-<html>
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="./core/css/styles.css" />
+<link rel="stylesheet" type="text/css"
+	href="./core/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<!-- <spring:url value="./core/js/index.js" var="coreJs" />
+    <spring:url value="./core/js/script.js" var="coreJs2" />
+   	<spring:url value="./core/js/bootstrap.min.js" var="bootstrapJs" /> -->
+<script src="./core/js/index.js"></script>
+<script src="./core/js/script.js"></script>
+<script src="./core/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.core.min.js"></script>
+<!-- <script src="https://pay.google.com/gp/p/js/pay.js"></script> -->
+<!-- <script type="text/javascript"
+	src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.9.2.min.js"></script> -->
+<script>
+	$(function() {
+		$("#header").load("header.html");
+		$("#footer").load("footer.html");
+	});
+</script>
 </head>
 <body>
-    <p>Greeting api:<a href="/greeting">greeting</a></p>
+	<div id="header"></div>
+	<img alt="no data" th:src="@{/media/DATA/git/rest-api/src/main/resources/static/Report/Screenshot/AddToCard_RECONAddToCard_RECON_GC_1_rowno_8_20200731-18-23-54.png}">
+	<!--  <p>Greeting api:<a href="/greeting">greeting</a></p>
     <p>Encrypt api:<a href="/encrypt">encrypt</a></p>
-    <p>Customer api:<a href="/customer">customer</a></p>
+    <p>Customer api:<a href="/customer">customer</a></p> -->
+	<section>
+		<!-- Defining the #page section with the section tag -->
+		<!-- Article 1 start -->
+		<!-- Dividing line -->
+		<article id="article1">
+			<!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+			<details>
+				<summary>Key word:</summary>
+				<p>launchapp | &lt;URL&gt;</p>
+				<p>wait | &lt;milisecond&gt;</p>
+				<p>importdata | &lt;Path of Data excel file&gt;</p>
+			</details>
+			<h2>Run test:</h2>
+			<input class="button" type="file" id="excelfile" /> <input
+				class="button" type="button" id="viewfile" value="Export To Table"
+				onclick="ExportToTable()" /> <input class="button" type="button"
+				id="clear" value="Clear" onclick="clearTableBody()" /> <input
+				class="button" type="button" id="save" value="Save"
+				onclick="saveTable()" /> <input class="button" type="button"
+				id="save" value="Download" onclick="download()" /> <br />
+			<div>
+				<p class="greeting-id">The ID is</p>
+				<p class="greeting-content">The content is</p>
+			</div>
+			<br />
+			<table id="exceltable">
+				<dialog id="dialogWaiting"> Please wait ... </dialog>
+				<div id="loading" title="Waiting dialog" hidden="hidden">
+					<p>Please wait ...</p>
+				</div>
+			</table>
+			<div class="line">
+				<form method="post" action="test">
+					<input type="radio" name="name" id="sikuli" value="sikuli"
+						checked="checked"> Sikuli<br> <input type="radio"
+						name="name" id="selenium" value="selenium"> Selenium<br>
+					<br> <input class="button" type="submit" id="btnTest"
+						onclick="openDialog()" value="Test" />
+
+				</form>
+
+			</div>
+		</article>
+		<!-- Article 1 end -->
+		<div id="card"></div>
+		<!-- Closing the #page section -->
+
+	</section>
+	<div id="footer"></div>
 </body>
 </html>
