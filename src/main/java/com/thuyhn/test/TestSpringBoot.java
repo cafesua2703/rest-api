@@ -94,6 +94,32 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 public class TestSpringBoot {
     
+    private static final String STOREVALUE = "storevalue";
+    private static final String GETCELLDATA = "getcelldata";
+    private static final String EXIST = "exist";
+    private static final String ENABLED = "enabled";
+    private static final String VISIBLE = "visible";
+    private static final String CHECKED = "checked";
+    private static final String OFF = "Off";
+    private static final String ON = "On";
+    private static final String RADIOBUTTON = "radiobutton";
+    private static final String CHECK = "check";
+    private static final String COMBOBOX = "combobox";
+    private static final String LISTBOX = "listbox";
+    private static final String TEXTAREA = "textarea";
+    private static final String TEXTBOX = "textbox";
+    private static final String INPUT = "input";
+    private static final String BUTTON = "button";
+    private static final String ELEMENT = "element";
+    private static final String EMPTY = "";
+    private static final String TEXT_COLON = "text:";
+    private static final String REGEX_SHARP = "#";
+    private static final String SWITCH = "switch";
+    private static final String REGEX_EQUAL = "=";
+    private static final String DIALOG = "dialog";
+    private static final String PAGE = "page";
+    private static final int _4 = 4;
+    private static final String TEXTELEMENT = "textelement";
     int scriptfound = 0;
     Setting setObj = new Setting(); // Updated on 16.12.2013
 
@@ -140,25 +166,25 @@ public class TestSpringBoot {
     static String screenReport;
     static int rowcnt;
     static int ORrowcount = 0;
-    static String ORvalname = "";
+    static String ORvalname = EMPTY;
     static int dtrownum = 1;
-    static String ORvalue = "";
-    static String action = "";
-    static String cCellData = "";
-    static String dCellData = "";
-    static String sComments = "";
+    static String ORvalue = EMPTY;
+    static String action = EMPTY;
+    static String cCellData = EMPTY;
+    static String dCellData = EMPTY;
+    static String sComments = EMPTY;
     static double nComments = 0;
     static boolean bComments = false;
-    static String htmlname = "";
-    static String cCellObjType = "";// included on 29-Nov-2013 for storing
-    static String cCellObjName = ""; // included on 29-Nov-2013 for storing
+    static String htmlname = EMPTY;
+    static String cCellObjType = EMPTY;// included on 29-Nov-2013 for storing
+    static String cCellObjName = EMPTY; // included on 29-Nov-2013 for storing
                                      // object name
     String[] cCellDataVal = null;
     String[] dCellDataVal = null;
     String ObjectSet;
     String[] ObjectSet1 = null;
-    String ObjectSet2 = "";
-    String ObjectSetVal = "";
+    String ObjectSet2 = EMPTY;
+    String ObjectSetVal = EMPTY;
     static XSSFSheet DTsheet = null;
     static XSSFSheet ORsheet;
     String Searchtext;
@@ -171,7 +197,7 @@ public class TestSpringBoot {
     String ieDriverPath;
     String chromeDriverPath;
     String ffDriverPath;
-    String reportsFolder = "";
+    String reportsFolder = EMPTY;
     static int iflag = 0;
     static String comments = null;
 
@@ -209,33 +235,33 @@ public class TestSpringBoot {
     String browserName;
     public static String objectType;
     public static int objFoundFlag = 0;
-    public static String capString = "";
+    public static String capString = EMPTY;
     static int locatorError = 0;
     static int ScreenshotTypeFlag = 0;
     int varUpdateReport;
     int today = 0;
-    String selectedDateClass = "";
+    String selectedDateClass = EMPTY;
     int lastSelecteddateJQ = 0;
     int lastSelectedmonthJQ = 0;
     int lastSelectedyearJQ = 0;
     static int conditionline = 0;
     static int reporttype = 0;
     static String reusableComponents;
-    static String ExpectedReportData = "";
-    static String ActualReportData = "";
-    static String OptionalString = "";
-    static String OptionalString2 = "";
+    static String ExpectedReportData = EMPTY;
+    static String ActualReportData = EMPTY;
+    static String OptionalString = EMPTY;
+    static String OptionalString2 = EMPTY;
     static String[] getCellArray;
     static int cCellDatanum = 0;
     static int waitcCellDatanum = 0;
-    static String DetailReport = "";
-    static String ScreenshotPath = "";
+    static String DetailReport = EMPTY;
+    static String ScreenshotPath = EMPTY;
     public static String ScreenFolder;
     static int browsertypeflg = 0;
     static String browser;
     static String ScriptName;
-    static String os = "";
-    static String signPath = "";
+    static String os = EMPTY;
+    static String signPath = EMPTY;
 
     private static final Logger LOGGER = Logger.getLogger(TestSpringBoot.class.getName());
 
@@ -250,7 +276,7 @@ public class TestSpringBoot {
     	
         LoadLog();
         XSSFWorkbook w1 = null;
-        String utilityFilePath = "";
+        String utilityFilePath = EMPTY;
         w1 = checkUtilityFile(w1);
         checkValueUtil(w1);
         
@@ -335,7 +361,7 @@ public class TestSpringBoot {
 
 	private void validator() {
 		if (!testSuite.endsWith(".xlsx")) {
-		    if (testSuite.toString() == "") {
+		    if (testSuite.toString() == EMPTY) {
 		        System.out.println(
 		                "No proper TestSuite is defined in Selenium Utility file. Give the correct TestSuite name.");
 		    } else {
@@ -349,7 +375,7 @@ public class TestSpringBoot {
 		}
 
 		if (!objectRepository.endsWith(".xlsx")) {
-		    if (objectRepository.toString() == "") {
+		    if (objectRepository.toString() == EMPTY) {
 		        System.out.println(
 		                "No proper Object repository is defined in Selenium Utility excel. Give the correct Object repository. ");
 		        LOGGER.log(Level.SEVERE, "Error occur in readUtilFile.",
@@ -363,7 +389,7 @@ public class TestSpringBoot {
 		    }
 
 		}
-		if (browserName.toString() == "") {
+		if (browserName.toString() == EMPTY) {
 		    System.out.println(
 		            "The browser type in the Selenium Utility file is not proper. Give a valid browser type");
 		    LOGGER.log(Level.SEVERE,
@@ -393,7 +419,7 @@ public class TestSpringBoot {
 
     private String getTestUtil(XSSFSheet sheet, String typeTest, int row) {
         if (sheet.getRow(row).getCell(1).getCellType() == CellType.BLANK) {
-            typeTest = "";
+            typeTest = EMPTY;
         } else if (sheet.getRow(row).getCell(1).getCellType() == CellType.NUMERIC) {
             double password1 = sheet.getRow(row).getCell(1).getNumericCellValue();
             typeTest = String.valueOf(password1);
@@ -406,7 +432,7 @@ public class TestSpringBoot {
     }
 
     private static String getSignPath(String os) {
-        String signPathCheck = "";
+        String signPathCheck = EMPTY;
         if (os.contains("Window")) {
             signPathCheck = "\\";
         } else {
@@ -775,7 +801,7 @@ public class TestSpringBoot {
 	}
 
 	private String getChromeDriverPath(File[] listofFiles) {
-		String chromeDriverPath = "";
+		String chromeDriverPath = EMPTY;
 		for (int i = 0; i < listofFiles.length; i++) {
 
 		    String filename = listofFiles[i].getName();
@@ -1025,7 +1051,7 @@ public class TestSpringBoot {
 	}
 
 	private String setReportPath(String rp) {
-		if (rp == "") {
+		if (rp == EMPTY) {
 		    // if results path is passed as null, by
 		    // default 'C:\' drive is used
 
@@ -1101,10 +1127,7 @@ public class TestSpringBoot {
         TScrowcount = TScsheet.getLastRowNum() + 1;
         rowcnt = 0;
 
-        for (j = 0; j < TScrowcount; j++)
-
-        {
-
+        for (j = 0; j < TScrowcount; j++) {
             rowcnt = rowcnt + 1;
             String TSvalidate = "r";
 
@@ -1117,7 +1140,6 @@ public class TestSpringBoot {
                 System.out.println((j + 1) + " | " + action + " | " + cCellData + " | " + dCellData + " | " + comments);
 
             }
-
         }
         bw.close();
         fs1.close();
@@ -1164,10 +1186,10 @@ public class TestSpringBoot {
 	}
 
 	private String getCellValue(FormulaEvaluator evaluator, int row, int cell) {
-		String data = "";
+		String data = EMPTY;
 		int cCellDatanum;
-		if(null == TScsheet.getRow(row).getCell(cell).getCellType()) {
-			data = "";
+		if(null == TScsheet.getRow(row).getCell(cell)) {
+			data = EMPTY;
 		} else if (TScsheet.getRow(row).getCell(cell).getCellType() == CellType.STRING) {
 			data = TScsheet.getRow(row).getCell(cell).getStringCellValue();
 		} else if (TScsheet.getRow(row).getCell(cell).getCellType() == CellType.NUMERIC) {
@@ -1190,9 +1212,9 @@ public class TestSpringBoot {
 			if(TestConstant._2 == cell) {
 				cCellDatanum = (int) TScsheet.getRow(row).getCell(cell).getNumericCellValue();
 			}
-		    data = "";
+		    data = EMPTY;
 		} else {
-			data = "";
+			data = EMPTY;
 		}
 		return data;
 	}
@@ -1224,7 +1246,7 @@ public class TestSpringBoot {
                 screenshotflag = screenshotflag + 1;
                 DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
                 Date date = new Date();
-                String filenamer = "";
+                String filenamer = EMPTY;
                 String strTime = dateFormat.format(date);
                 Sname = Sname.substring(0, Sname.indexOf("."));
                 ScreenFolder = Sname;
@@ -1232,7 +1254,7 @@ public class TestSpringBoot {
                 ScreenshotPath = screenReport + Sname;
 
                 // screenReport = screenReport.toLowerCase();
-                if (screenReport == "") {
+                if (screenReport == EMPTY) {
                     screenReport = reportsPath;
                     initscreenFlag = 2;
                 }
@@ -1878,7 +1900,7 @@ public class TestSpringBoot {
                                 + "Function is not executed. Error exists in  User Defined function. Correct the User Defined Function</div></th></FONT></TR>");
             }
 
-            else if (Res_type.equalsIgnoreCase("getcelldata")) {
+            else if (Res_type.equalsIgnoreCase(GETCELLDATA)) {
                 exeStatus_suite = "Failed";
                 exeStatus = "Failed";
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>"
@@ -2065,7 +2087,7 @@ public class TestSpringBoot {
 
     }
 
-    public static void update_Report(String Res_type, String ObjectSet, String ObjectSetVal) throws IOException // //Updated
+    public static void update_Report(String Res_type, String objectSet, String ObjectSetVal) throws IOException // //Updated
                                                                                                                 // on
                                                                                                                 // 16.12.2013
                                                                                                                 // for
@@ -2086,11 +2108,11 @@ public class TestSpringBoot {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
             str_time = dateFormat.format(exec_time);
             if (reporttype == 1) {} else {}
-            if (Res_type.startsWith("executed") && ObjectSet.equalsIgnoreCase("page")) {
+            if (Res_type.startsWith("executed") && objectSet.equalsIgnoreCase(PAGE)) {
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " ; " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = GREEN>"
@@ -2099,18 +2121,18 @@ public class TestSpringBoot {
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " : " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = GREEN>"
                         + "Passed" + "</FONT></TD></TR>");
-            } else if (Res_type.startsWith("NoWindowFound") && ObjectSet.equalsIgnoreCase("page")) {
+            } else if (Res_type.startsWith("NoWindowFound") && objectSet.equalsIgnoreCase(PAGE)) {
                 exeStatus_suite = "Failed";
                 exeStatus = "Failed";
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " ; " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = RED>" + "Failed"
@@ -2126,7 +2148,7 @@ public class TestSpringBoot {
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " : " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = RED>" + "Failed"
@@ -2142,7 +2164,7 @@ public class TestSpringBoot {
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " : " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = ORANGE>"
@@ -2157,7 +2179,7 @@ public class TestSpringBoot {
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " : " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = ORANGE>"
@@ -2172,7 +2194,7 @@ public class TestSpringBoot {
                 bw.write("<TR COLS=6><TD BGCOLOR=#EEEEEE WIDTH=5%><FONT FACE=VERDANA SIZE=2>" + (j + 1)
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=17%><FONT FACE=VERDANA SIZE=2>" + action
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + cCellData
-                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + ObjectSet
+                        + "</FONT></TD></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + objectSet
                         + " : " + ObjectSetVal + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>"
                         + comments + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2>" + str_time
                         + "</FONT></TD><TD BGCOLOR=#EEEEEE WIDTH=30%><FONT FACE=VERDANA SIZE=2 COLOR = RED>" + "Failed"
@@ -2195,354 +2217,64 @@ public class TestSpringBoot {
             String varname;
             String[] cCellDataValCh = cCellData.split(";");
             String objectType = cCellDataValCh[0];
-            String ObjectValCh = "";
+            String objectVal = EMPTY;
             try {
                 // Inserted on 16/12/2012. For holding Object Type
-                ObjectValCh = cCellDataValCh[1];
+                objectVal = cCellDataValCh[1];
                 // Inserted on 16/12/2012. For Holding Object Name
             } catch (ArrayIndexOutOfBoundsException e) {
-                ObjectValCh = "";
+                objectVal = EMPTY;
             }
-            String[] dCellDataValCh = dCellData.split(":");
-            String ObjectSetCh = dCellDataValCh[0];
-            String ObjectSetValCh = "";
-            int DTcolumncountCh = 0;
-            if (objectType.equalsIgnoreCase("textelement")) {
-                ObjectSetValCh = dCellData.replaceFirst("text:", "");
-                System.out.println("ObjectSetValCh   is ><> > " + ObjectSetValCh);
-            } else {
-                if (dCellDataValCh.length == 2) {
-                    ObjectSetValCh = dCellDataValCh[1];
-                }
-                // 2016-03-23 Multiple Selected Check Support
-                else if (dCellDataValCh.length > 2) {
-                    ObjectSetValCh = dCellDataValCh[1];
-                    for (int i = 2; i < dCellDataValCh.length; i++) {
-                        ObjectSetValCh += ":" + dCellDataValCh[i];
-                    }
-                }
-            }
-            if (dCellDataValCh.length == 2) {
-                if (ObjectSetValCh.substring(0, 1).equalsIgnoreCase("#")) {
-                    System.out.println("In #");
-                    if (map.get(ObjectSetValCh.substring(1, (ObjectSetValCh.length()))) != null) {
-                        ObjectSetValCh = map.get(ObjectSetValCh.substring(1, (ObjectSetValCh.length())));
-                    } else {
-                        ObjectSetValCh = "";
-                    }
-                }
-            }
-            if (objectType.equalsIgnoreCase("page") || objectType.equalsIgnoreCase("dialog")) {
-
-                objFoundFlag = 1;
-            } else {
-                for (int k = 0; k <= ORrowcount; k++) {
-                    if (((ORsheet.getRow(k).getCell(1).getStringCellValue()).equalsIgnoreCase(ObjectValCh) == true)) {
-                        String[] ORcellData = new String[3];
-                        ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split("=", 2);
-                        ORvalname = ORcellData[0];
-                        ORvalue = ORcellData[1];
-                        k = ORrowcount + 1;
-                        objFoundFlag = 1;
-                    }
-                }
-            }
+            String[] dCellDataVal = dCellData.split(":");
+            String objectSet = dCellDataVal[0];
+            String objectSetVal = EMPTY;
+            String[] objectSetVals = new String[]{};
+            objectSetVal = getVarName(objectType, dCellDataVal, objectSetVal);
+            if (dCellDataVal.length == 2) {
+                objectSetVal = getVarValue(objectSetVal);
+            } 
+            objFound(objectType, objectVal);
 
             if (objFoundFlag == 1) {
                 objFoundFlag = 0;
-                if (dCellDataValCh.length == 2) {
-                    if (ObjectSetValCh.contains("dt_")) {
-                        iflag = 0;
-                        String ObjectSetValtableheader[] = ObjectSetValCh.split("_");
-                        int column = 0;
-                        String Searchtext = ObjectSetValtableheader[1];
-                        try {
-                            DTcolumncountCh = DTsheet.getRow(0).getLastCellNum();
-                        } catch (NullPointerException e) {
-                            return;
-                        }
-                        for (column = 0; column < DTcolumncountCh; column++) {
-                            if (Searchtext
-                                    .equalsIgnoreCase(DTsheet.getRow(0).getCell(column).getStringCellValue()) == true) {
-                                ObjectSetValCh = DTsheet.getRow(dtrownum).getCell(column).getStringCellValue();
-                                iflag = 1;
-                                if (ObjectSetValCh.length() == 0) {
-                                    ObjectSetValCh = "";
-                                }
-                            }
-
-                        }
-                        if (iflag == 0) {
-                            ObjectSetValCh = "nodatarow";
-                        }
-                    }
-
-                    if (ObjectSetValCh.contains("dt_")) {
-                        String ObjectSetValtableheader[] = ObjectSetValCh.split("_");
-                        int column = 0;
-                        String Searchtext = ObjectSetValtableheader[1];
-                        DTcolumncountCh = DTsheet.getRow(0).getLastCellNum();
-                        for (column = 0; column < DTcolumncountCh; column++) {
-                            if (Searchtext
-                                    .equalsIgnoreCase(DTsheet.getRow(0).getCell(column).getStringCellValue()) == true) {
-                                ObjectSetValCh = DTsheet.getRow(dtrownum).getCell(column).getStringCellValue();
-                                iflag = 1;
-                                if (ObjectSetValCh.length() == 0) {
-                                    ObjectSetValCh = "";
-                                }
-                            }
-                        }
-                        if (iflag == 0) {
-                            ORvalname = "exit";
-                        }
-                    }
+                if (dCellDataVal.length == 2) {
+                    objectSetVal = checkDtNoDataRow(objectSetVal);
+                    checkDtValExit(objectSetVal);
                 }
-                switch (ObjectSetCh.toLowerCase()) {
-                    case "enabled":
-                        if (objectType.equalsIgnoreCase("textbox") || objectType.equalsIgnoreCase("combobox")
-                                || objectType.equalsIgnoreCase("listbox") || objectType.equalsIgnoreCase("radiobutton")
-                                || objectType.equalsIgnoreCase("button") || objectType.equalsIgnoreCase("checkbox")
-                                || objectType.equalsIgnoreCase("textarea") || objectType.equalsIgnoreCase("image")
-                                || objectType.equalsIgnoreCase("table") || objectType.equalsIgnoreCase("link")
-                                || objectType.equalsIgnoreCase("element")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            boolval = elem.isEnabled();
-                            actval = boolval.toString();
-                        } else {
-                            update_Report("property1");
-                        }
+                switch (objectSet.toLowerCase()) {
+                    case ENABLED:
+                        actval = objectSetIsEnable(actval, objectType);
                         break;
                     case "text":
-                        // Updated on 10.9.2015
-                        // Specifications change for STH
-                        if (objectType.equalsIgnoreCase("button")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            if (elem.getTagName().equalsIgnoreCase("button")) {
-                                actval = elem.getText();
-                            } else if (elem.getTagName().equalsIgnoreCase("input")) {
-                                actval = elem.getAttribute("value");
-                            } else {
-                                update_Report("property1");
-                            }
-                        } else if (objectType.equalsIgnoreCase("textbox") || objectType.equalsIgnoreCase("textarea")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            actval = elem.getAttribute("value");
-
-                        } else if (objectType.equalsIgnoreCase("textelement")
-                                || objectType.equalsIgnoreCase("element")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            actval = elem.getText();
-
-                        } else if (objectType.equalsIgnoreCase("combobox") || objectType.equalsIgnoreCase("listbox")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            // 2016-03-23 Multiple Selected Check Support
-                            List<WebElement> selectedList = new Select(elem).getAllSelectedOptions();
-                            actval = selectedList.get(0).getText();
-                            if (selectedList.size() > 1) {
-                                for (int i = 1; i < selectedList.size(); i++) {
-                                    actval += ":" + selectedList.get(i).getText();
-                                }
-                            }
-
-                        } else {
-
-                            update_Report("property1");
-                        }
+                        actval = objectSetIsText(actval, objectType);
                         break;
                     case "value":
-                        // Updated on 10.9.2015
-                        // Specifications change for STH
-                        // 2016-03-23 Multiple Selected Check Support
-                        if (objectType.equalsIgnoreCase("checkbox") || objectType.equalsIgnoreCase("combobox")
-                                || objectType.equalsIgnoreCase("radiobutton")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            actval = elem.getAttribute("value");
-                        } else if (objectType.equalsIgnoreCase("listbox")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            List<WebElement> selectedList = new Select(elem).getAllSelectedOptions();
-                            actval = selectedList.get(0).getAttribute("value");
-                            if (selectedList.size() > 1) {
-                                for (int i = 1; i < selectedList.size(); i++) {
-                                    actval += ":" + selectedList.get(i).getAttribute("value");
-                                }
-                            }
-                        } else {
-                            update_Report("property1");
-                        }
+                        actval = objectSetIsValue(actval, objectType);
                         break;
-                    case "visible":
-                        if (objectType.equalsIgnoreCase("textbox") || objectType.equalsIgnoreCase("combobox")
-                                || objectType.equalsIgnoreCase("listbox") || objectType.equalsIgnoreCase("radiobutton")
-                                || objectType.equalsIgnoreCase("button") || objectType.equalsIgnoreCase("checkbox")
-                                || objectType.equalsIgnoreCase("textarea") || objectType.equalsIgnoreCase("image")
-                                || objectType.equalsIgnoreCase("table") || objectType.equalsIgnoreCase("link")
-                                || objectType.equalsIgnoreCase("element")) {
-                            func_FindObj(ORvalname, ORvalue);
-                            boolval = elem.isDisplayed();
-                            actval = boolval.toString();
-                        } else {
-                            update_Report("property1");
-                        }
-
+                    case VISIBLE:
+                        actval = objectSetIsVisible(actval, objectType);
                         break;
-                    case "checked":
-                        if ((objectType.equalsIgnoreCase("radiobutton") || objectType.equalsIgnoreCase("checkbox")
-                                || objectType.equalsIgnoreCase("element"))) {
-                            func_FindObj(ORvalname, ORvalue);
-                            boolval = elem.isSelected();
-                            actval = boolval.toString();
-
-                        } else {
-                            update_Report("property1");
-                        }
+                    case CHECKED:
+                        actval = objectSetIsChecked(actval, objectType);
                         break;
                     case "linktext":
-                        if (objectType.equalsIgnoreCase("link")) {
-                            func_FindObj(ORvalname, ORvalue);
-
-                            actval = elem.getText();
-                        } else {
-                            update_Report("Property1");
-                        }
+                        actval = objectSetIsLinkText(actval, objectType);
                         break;
                     case "pagetitle":
-                        if (ObjectValCh != "") {
-                            actval = ObjectValCh;
-                        } else {
-                            actval = D8.getTitle();
-                        }
+                        actval = objectSetIsPageTitle(objectVal);
                         break;
-
-                    case "exist":
-                        boolval = false;
-                        actval = boolval.toString();
-
-                        if ((objectType.equalsIgnoreCase("page")) == true
-
-                                && (D8.getTitle().toString().equalsIgnoreCase(ObjectValCh)) == true) {
-
-                            actval = "true";
-                        } else {
-                            if (objectType.equalsIgnoreCase("page")) {
-
-                                String currentWindowHandle = D8.getWindowHandle();
-                                int windowFound = 0;
-                                WebDriver newWindow = null;
-                                Set<String> al = new HashSet<String>();
-                                al = D8.getWindowHandles();
-                                Iterator<String> windowIterator = al.iterator();
-
-                                if (D8.getTitle().toString().equalsIgnoreCase(ObjectValCh) != true) {
-                                    while (windowIterator.hasNext()) {
-                                        String windowHandle = windowIterator.next();
-                                        newWindow = D8.switchTo().window(windowHandle);
-                                        if (newWindow.getTitle().toString().equalsIgnoreCase(ObjectValCh) == true) {
-                                            boolval = true;
-                                            actval = boolval.toString();
-                                            windowFound = 1;
-                                            break;
-                                        }
-
-                                    }
-                                    if (windowFound != 1) {
-                                        boolval = false;
-
-                                        actval = boolval.toString();
-                                    }
-                                    D8.switchTo().window(currentWindowHandle);
-                                }
-
-                            } else {
-
-                                if (objectType.equalsIgnoreCase("dialog") == true) {
-                                    try {
-
-                                        Alert dialogExist = null;
-                                        dialogExist = D8.switchTo().alert();
-                                        if (dialogExist.toString() != null) {
-                                            boolval = true;
-                                            actval = boolval.toString();
-                                        } else {
-                                            boolval = false;
-                                            actval = boolval.toString();
-                                        }
-
-                                    } catch (NoAlertPresentException e) {
-
-                                        boolval = false;
-                                        actval = boolval.toString();
-
-                                    }
-
-                                }
-                            }
-
-                        }
-
+                    case EXIST:
+                        actval = objectSetIsExist(objectType, objectVal);
                         break;
                     case "rowcount":
-                        func_FindObj(ORvalname, ORvalue);
-                        List<WebElement> rows = elem.findElements(By.tagName("tr"));
-                        Integer rowCount = rows.size();
-                        if (rowCount == 0) {
-
-                            rowCount = 1;
-                        }
-                        actval = rowCount.toString();
+                        actval = objectSetIsRowCount();
                         break;
 
                     case "columncount":
-                        WebElement headerRow = null;
-                        func_FindObj(ORvalname, ORvalue);
-                        List<WebElement> rows1 = elem.findElements(By.tagName("tr"));
-                        try {
-                            headerRow = rows1.get(rows1.size() - 2);
-                        } catch (Exception Ed) {
-                            try {
-                                headerRow = rows1.get(1);
-                            } catch (Exception Ed1) {
-                                headerRow = rows1.get(0);
-                            }
-                        }
-
-                        List<WebElement> columns = headerRow.findElements(By.tagName("th"));
-                        Integer colCount = columns.size();
-                        if (colCount == 0) {
-                            List<WebElement> columns0 = headerRow.findElements(By.tagName("td"));
-                            colCount = columns0.size();
-                            if (colCount == 0) {
-                                WebElement columns1 = headerRow.findElement(By.tagName("th"));
-                                if (columns1 != null) {
-                                    colCount = 1;
-                                } else {
-                                    WebElement columns2 = headerRow.findElement(By.tagName("td"));
-                                    if (columns2 != null) {
-                                        colCount = 1;
-                                    }
-                                }
-                            }
-
-                        }
-                        actval = colCount.toString();
+                        actval = objectSetIsColumnCount();
                         break;
-                    case "getcelldata":
-                        func_FindObj(ORvalname, ORvalue);
-                        try {
-                            List<WebElement> cellRows = elem.findElements(By.tagName("tr"));
-                            getCellArray = dCellData.split(":");
-                            String cellData = "";
-                            int rowNumber = Integer.parseInt(getCellArray[2]);
-                            int colNumber = Integer.parseInt(getCellArray[3]);
-                            System.out.println("rownum - " + rowNumber + "  col num - " + colNumber);
-                            WebElement reqrow = cellRows.get(rowNumber - 1);
-                            List<WebElement> reqcolmns = reqrow.findElements(By.tagName("td"));
-                            WebElement reqcellData = reqcolmns.get(colNumber - 1);
-                            cellData = reqcellData.getText();
-                            actval = cellData.toString();
-                            ObjectSetValCh = getCellArray[1];
-                        } catch (Exception e) {
-                            update_Report("getcelldata");
-                        }
+                    case GETCELLDATA:
+                        actval = objectSetIsGetCellData(actval);
                         break;
 
                     default:
@@ -2551,130 +2283,10 @@ public class TestSpringBoot {
                         break;
                 }
 
-                if ((ActionVal).equalsIgnoreCase("check")) {
-                    expval = ObjectSetValCh;
-                    // Updated on 14.9.2015
-                    // Specifications change for STH
-                    if (objectType.equalsIgnoreCase("radiobutton")) {
-                        if (expval.equalsIgnoreCase("On")) {
-                            expval = "True";
-                        } else if (expval.equalsIgnoreCase("Off")) {
-                            expval = "False";
-                        }
-                    }
-
-                    if (ObjectSetCh.equalsIgnoreCase("checked") || ObjectSetCh.equalsIgnoreCase("visible")
-                            || ObjectSetCh.equalsIgnoreCase("enabled") || ObjectSetCh.equalsIgnoreCase("exist")) {
-                        if (expval.equalsIgnoreCase(actval)) {
-                            // Updated on 14.9.2015
-                            // Specifications change for STH
-
-                            System.out.println("Actual value matches with expected value. " + " Actual Value is "
-                                    + actval + " and expected value is " + expval);
-
-                            if (ObjectSetCh.equalsIgnoreCase("getcelldata")) {
-
-                                update_Report("executed");
-                            } else {
-                                update_Report("executed", ObjectSetCh, ObjectSetValCh);
-                            }
-                            if (capturecheckvalue == true) {
-                                screenShot(loopnum, TScrowcount, TScname);
-                            }
-                        } else {
-
-                            System.out.println("Actual value doesn't match with expected value. Actual value is "
-                                    + actval + " expected value is " + expval);
-
-                            if (ORvalname == "exit") {
-                                update_Report("missing", ObjectSetCh, ObjectSetValCh);
-
-                            } else {
-                                if (ObjectSetCh.equalsIgnoreCase("getcelldata")) {
-                                    update_Report("failed");
-                                } else {
-                                    update_Report("failed", ObjectSetCh, ObjectSetValCh);
-                                }
-
-                            }
-                            if (capturecheckvalue == true) {
-                                screenShot(loopnum, TScrowcount, TScname);
-                            }
-                        }
-                    } else {
-                        if (expval.equals(actval)) {
-                            // Updated on 14.9.2015
-                            // Specifications change for STH
-                            System.out.println("Actual value matches with expected value. " + " Actual Value is "
-                                    + actval + " and expected value is " + expval);
-                            if (ObjectSetCh.equalsIgnoreCase("getcelldata")) {
-
-                                update_Report("executed");
-                            } else {
-                                update_Report("executed", ObjectSetCh, ObjectSetValCh);
-                            }
-                            if (capturecheckvalue == true) {
-                                screenShot(loopnum, TScrowcount, TScname);
-                            }
-                        } else {
-                            System.out.println("Actual value doesn't match with expected value. Actual value is "
-                                    + actval + " expected value is " + expval);
-
-                            if (ORvalname == "exit") {
-                                update_Report("missing", ObjectSetCh, ObjectSetValCh);
-
-                            } else {
-                                if (ObjectSetCh.equalsIgnoreCase("getcelldata")) {
-                                    update_Report("failed");
-                                } else {
-                                    update_Report("failed", ObjectSetCh, ObjectSetValCh);
-                                }
-                            }
-                            if (capturecheckvalue == true) {
-                                screenShot(loopnum, TScrowcount, TScname);
-                            }
-                        }
-                    }
-                } else if ((ActionVal).equalsIgnoreCase("storevalue"))
-
-                {
-                    varname = ObjectSetValCh;
-
-                    if (actval.equalsIgnoreCase("Invalid syntax")) {
-                        update_Report("missing", ObjectSetCh, ObjectSetValCh);
-
-                    } else {
-                        if (map.containsKey(varname)) {
-                            map.remove(varname);
-                            map.put(varname, actval);
-
-                            if (ObjectSetCh.equalsIgnoreCase("getcelldata")) {
-                                update_Report("executed");
-                            } else {
-                                update_Report("executed", ObjectSetCh, ObjectSetValCh);
-                            }
-                            System.out.println("Overwriting the value of the variable " + varname + "have value "
-                                    + map.get(varname) + " to store the value as mentioned in the test case row number"
-                                    + rowcnt);
-                        } else {
-                            map.put(varname, actval);
-                            if (ObjectSetCh.equalsIgnoreCase("getcelldata")) {
-                                update_Report("executed");
-                            } else {
-                                update_Report("executed", ObjectSetCh, ObjectSetValCh);
-                            }
-                            System.out.println("Overwriting the value of the variable " + varname
-                                    + " to store the value as mentioned in the test case row number" + rowcnt);
-                            if (ObjectSetValCh == "nodatarow") {
-                                update_Report("missing");
-                            } else {
-
-                            }
-                        }
-                    }
-                    if (capturestorevalue == true) {
-                        screenShot(loopnum, TScrowcount, TScname);
-                    }
+                if ((ActionVal).equalsIgnoreCase(CHECK)) {
+                    actionValIsCheck(actval, objectType, objectSet, objectSetVal);
+                } else if ((ActionVal).equalsIgnoreCase(STOREVALUE)) {
+                    actionValsStoreValue(actval, objectSet, objectSetVal);
                 }
 
             } else {
@@ -2689,10 +2301,537 @@ public class TestSpringBoot {
 
     }
 
-    // @After
-    public void close() throws Exception
+    private static void actionValIsCheck(String actval, String objectType, String objectSet, String objectSetVal)
+            throws IOException, Exception {
+        String expval;
+        expval = objectSetVal;
+        // Updated on 14.9.2015
+        // Specifications change for STH
+        if (objectType.equalsIgnoreCase(RADIOBUTTON)) {
+            if (expval.equalsIgnoreCase(ON)) {
+                expval = "True";
+            } else if (expval.equalsIgnoreCase(OFF)) {
+                expval = "False";
+            }
+        }
 
-    {
+        if (objectSet.equalsIgnoreCase(CHECKED) || objectSet.equalsIgnoreCase(VISIBLE)
+                || objectSet.equalsIgnoreCase(ENABLED) || objectSet.equalsIgnoreCase(EXIST)) {
+            if (expval.equalsIgnoreCase(actval)) {
+                // Updated on 14.9.2015
+                // Specifications change for STH
+
+                System.out.println("Actual value matches with expected value. " + " Actual Value is "
+                        + actval + " and expected value is " + expval);
+
+                if (objectSet.equalsIgnoreCase(GETCELLDATA)) {
+
+                    update_Report("executed");
+                } else {
+                    update_Report("executed", objectSet, objectSetVal);
+                }
+                if (capturecheckvalue == true) {
+                    screenShot(loopnum, TScrowcount, TScname);
+                }
+            } else {
+
+                System.out.println("Actual value doesn't match with expected value. Actual value is "
+                        + actval + " expected value is " + expval);
+
+                if (ORvalname == "exit") {
+                    update_Report("missing", objectSet, objectSetVal);
+
+                } else {
+                    if (objectSet.equalsIgnoreCase(GETCELLDATA)) {
+                        update_Report("failed");
+                    } else {
+                        update_Report("failed", objectSet, objectSetVal);
+                    }
+
+                }
+                if (capturecheckvalue == true) {
+                    screenShot(loopnum, TScrowcount, TScname);
+                }
+            }
+        } else {
+            if (expval.equals(actval)) {
+                // Updated on 14.9.2015
+                // Specifications change for STH
+                System.out.println("Actual value matches with expected value. " + " Actual Value is "
+                        + actval + " and expected value is " + expval);
+                if (objectSet.equalsIgnoreCase(GETCELLDATA)) {
+
+                    update_Report("executed");
+                } else {
+                    update_Report("executed", objectSet, objectSetVal);
+                }
+                if (capturecheckvalue == true) {
+                    screenShot(loopnum, TScrowcount, TScname);
+                }
+            } else {
+                System.out.println("Actual value doesn't match with expected value. Actual value is "
+                        + actval + " expected value is " + expval);
+
+                if (ORvalname == "exit") {
+                    update_Report("missing", objectSet, objectSetVal);
+
+                } else {
+                    if (objectSet.equalsIgnoreCase(GETCELLDATA)) {
+                        update_Report("failed");
+                    } else {
+                        update_Report("failed", objectSet, objectSetVal);
+                    }
+                }
+                if (capturecheckvalue == true) {
+                    screenShot(loopnum, TScrowcount, TScname);
+                }
+            }
+        }
+    }
+
+    private static void actionValsStoreValue(String actval, String objectSet, String objectSetVal)
+            throws IOException, Exception {
+        String varname;
+        varname = objectSetVal;
+
+        if (actval.equalsIgnoreCase("Invalid syntax")) {
+            update_Report("missing", objectSet, objectSetVal);
+
+        } else {
+            if (map.containsKey(varname)) {
+                if(varname.contains(",")) {
+                    putVals(actval, varname);
+                } else {
+                    map.remove(varname);
+                    map.put(varname, actval);
+                }
+                
+
+                if (objectSet.equalsIgnoreCase(GETCELLDATA)) {
+                    update_Report("executed");
+                } else {
+                    update_Report("executed", objectSet, objectSetVal);
+                }
+                System.out.println("Overwriting the value of the variable " + varname + "have value "
+                        + map.get(varname) + " to store the value as mentioned in the test case row number"
+                        + rowcnt);
+            } else {
+                if(varname.contains(",")) {
+                    putVals(actval, varname);
+                } else {
+                    map.put(varname, actval);
+                }
+                if (objectSet.equalsIgnoreCase(GETCELLDATA)) {
+                    update_Report("executed");
+                } else {
+                    update_Report("executed", objectSet, objectSetVal);
+                }
+                System.out.println("Overwriting the value of the variable " + varname
+                        + " to store the value as mentioned in the test case row number" + rowcnt);
+                if (objectSetVal == "nodatarow") {
+                    update_Report("missing");
+                } else {
+
+                }
+            }
+        }
+        if (capturestorevalue == true) {
+            screenShot(loopnum, TScrowcount, TScname);
+        }
+    }
+
+    private static void putVals(String actval, String varname) {
+        String[] varnames = varname.split(",");
+        String[] actvals = actval.split(EMPTY);
+        for (int i = 0; i < varnames.length && i < actvals.length; i++) {
+            map.remove(varnames[i]);
+            map.put(varnames[i], actvals[i]);
+        }
+    }
+
+    private static String objectSetIsGetCellData(String actval) throws Exception, IOException {
+        String objectSetVal;
+        func_FindObj(ORvalname, ORvalue);
+        try {
+            List<WebElement> cellRows = elem.findElements(By.tagName("tr"));
+            getCellArray = dCellData.split(":");
+            String cellData = EMPTY;
+            int rowNumber = Integer.parseInt(getCellArray[2]);
+            int colNumber = Integer.parseInt(getCellArray[3]);
+            System.out.println("rownum - " + rowNumber + "  col num - " + colNumber);
+            WebElement reqrow = cellRows.get(rowNumber - 1);
+            List<WebElement> reqcolmns = reqrow.findElements(By.tagName("td"));
+            WebElement reqcellData = reqcolmns.get(colNumber - 1);
+            cellData = reqcellData.getText();
+            actval = cellData.toString();
+            objectSetVal = getCellArray[1];
+        } catch (Exception e) {
+            update_Report(GETCELLDATA);
+        }
+        return actval;
+    }
+
+    private static String objectSetIsColumnCount() throws Exception {
+        String actval;
+        WebElement headerRow = null;
+        func_FindObj(ORvalname, ORvalue);
+        List<WebElement> rows1 = elem.findElements(By.tagName("tr"));
+        try {
+            headerRow = rows1.get(rows1.size() - 2);
+        } catch (Exception Ed) {
+            try {
+                headerRow = rows1.get(1);
+            } catch (Exception Ed1) {
+                headerRow = rows1.get(0);
+            }
+        }
+
+        List<WebElement> columns = headerRow.findElements(By.tagName("th"));
+        Integer colCount = columns.size();
+        if (colCount == 0) {
+            List<WebElement> columns0 = headerRow.findElements(By.tagName("td"));
+            colCount = columns0.size();
+            if (colCount == 0) {
+                WebElement columns1 = headerRow.findElement(By.tagName("th"));
+                if (columns1 != null) {
+                    colCount = 1;
+                } else {
+                    WebElement columns2 = headerRow.findElement(By.tagName("td"));
+                    if (columns2 != null) {
+                        colCount = 1;
+                    }
+                }
+            }
+
+        }
+        actval = colCount.toString();
+        return actval;
+    }
+
+    private static String objectSetIsRowCount() throws Exception {
+        String actval;
+        func_FindObj(ORvalname, ORvalue);
+        List<WebElement> rows = elem.findElements(By.tagName("tr"));
+        Integer rowCount = rows.size();
+        if (rowCount == 0) {
+
+            rowCount = 1;
+        }
+        actval = rowCount.toString();
+        return actval;
+    }
+
+    private static String objectSetIsExist(String objectType, String objectValCh) {
+        String actval;
+        Boolean boolval;
+        boolval = false;
+        actval = boolval.toString();
+
+        if ((objectType.equalsIgnoreCase(PAGE)) == true
+
+                && (D8.getTitle().equalsIgnoreCase(objectValCh))) {
+
+            actval = "true";
+        } else {
+            if (objectType.equalsIgnoreCase(PAGE)) {
+
+                String currentWindowHandle = D8.getWindowHandle();
+                int windowFound = 0;
+                WebDriver newWindow = null;
+                Set<String> al = new HashSet<String>();
+                al = D8.getWindowHandles();
+                Iterator<String> windowIterator = al.iterator();
+
+                if (D8.getTitle().toString().equalsIgnoreCase(objectValCh) != true) {
+                    while (windowIterator.hasNext()) {
+                        String windowHandle = windowIterator.next();
+                        newWindow = D8.switchTo().window(windowHandle);
+                        if (newWindow.getTitle().toString().equalsIgnoreCase(objectValCh) == true) {
+                            boolval = true;
+                            actval = boolval.toString();
+                            windowFound = 1;
+                            break;
+                        }
+
+                    }
+                    if (windowFound != 1) {
+                        boolval = false;
+
+                        actval = boolval.toString();
+                    }
+                    D8.switchTo().window(currentWindowHandle);
+                }
+
+            } else {
+
+                if (objectType.equalsIgnoreCase(DIALOG) == true) {
+                    try {
+
+                        Alert dialogExist = null;
+                        dialogExist = D8.switchTo().alert();
+                        if (dialogExist.toString() != null) {
+                            boolval = true;
+                            actval = boolval.toString();
+                        } else {
+                            boolval = false;
+                            actval = boolval.toString();
+                        }
+
+                    } catch (NoAlertPresentException e) {
+
+                        boolval = false;
+                        actval = boolval.toString();
+
+                    }
+
+                }
+            }
+
+        }
+        return actval;
+    }
+
+    private static String objectSetIsPageTitle(String objectValCh) {
+        String actval;
+        if (objectValCh != EMPTY) {
+            actval = objectValCh;
+        } else {
+            actval = D8.getTitle();
+        }
+        return actval;
+    }
+
+    private static String objectSetIsLinkText(String actval, String objectType) throws Exception, IOException {
+        if (objectType.equalsIgnoreCase("link")) {
+            func_FindObj(ORvalname, ORvalue);
+
+            actval = elem.getText();
+        } else {
+            update_Report("Property1");
+        }
+        return actval;
+    }
+
+    private static String objectSetIsChecked(String actval, String objectType) throws Exception, IOException {
+        Boolean boolval;
+        if ((objectType.equalsIgnoreCase(RADIOBUTTON) || objectType.equalsIgnoreCase("checkbox")
+                || objectType.equalsIgnoreCase(ELEMENT))) {
+            func_FindObj(ORvalname, ORvalue);
+            boolval = elem.isSelected();
+            actval = boolval.toString();
+
+        } else {
+            update_Report("property1");
+        }
+        return actval;
+    }
+
+    private static String objectSetIsVisible(String actval, String objectType) throws Exception, IOException {
+        Boolean boolval;
+        if (objectType.equalsIgnoreCase(TEXTBOX) || objectType.equalsIgnoreCase(COMBOBOX)
+                || objectType.equalsIgnoreCase(LISTBOX) || objectType.equalsIgnoreCase(RADIOBUTTON)
+                || objectType.equalsIgnoreCase(BUTTON) || objectType.equalsIgnoreCase("checkbox")
+                || objectType.equalsIgnoreCase(TEXTAREA) || objectType.equalsIgnoreCase("image")
+                || objectType.equalsIgnoreCase("table") || objectType.equalsIgnoreCase("link")
+                || objectType.equalsIgnoreCase(ELEMENT)) {
+            func_FindObj(ORvalname, ORvalue);
+            boolval = elem.isDisplayed();
+            actval = boolval.toString();
+        } else {
+            update_Report("property1");
+        }
+        return actval;
+    }
+
+    private static String objectSetIsValue(String actval, String objectType) throws Exception, IOException {
+        // Updated on 10.9.2015
+        // Specifications change for STH
+        // 2016-03-23 Multiple Selected Check Support
+        if (objectType.equalsIgnoreCase("checkbox") || objectType.equalsIgnoreCase(COMBOBOX)
+                || objectType.equalsIgnoreCase(RADIOBUTTON)) {
+            func_FindObj(ORvalname, ORvalue);
+            actval = elem.getAttribute("value");
+        } else if (objectType.equalsIgnoreCase(LISTBOX)) {
+            func_FindObj(ORvalname, ORvalue);
+            List<WebElement> selectedList = new Select(elem).getAllSelectedOptions();
+            actval = selectedList.get(0).getAttribute("value");
+            if (selectedList.size() > 1) {
+                for (int i = 1; i < selectedList.size(); i++) {
+                    actval += ":" + selectedList.get(i).getAttribute("value");
+                }
+            }
+        } else {
+            update_Report("property1");
+        }
+        return actval;
+    }
+
+    private static String objectSetIsText(String actval, String objectType) throws Exception, IOException {
+        // Updated on 10.9.2015
+        // Specifications change for STH
+        if (objectType.equalsIgnoreCase(BUTTON)) {
+            func_FindObj(ORvalname, ORvalue);
+            if (elem.getTagName().equalsIgnoreCase(BUTTON)) {
+                actval = elem.getText();
+            } else if (elem.getTagName().equalsIgnoreCase(INPUT)) {
+                actval = elem.getAttribute("value");
+            } else {
+                update_Report("property1");
+            }
+        } else if (objectType.equalsIgnoreCase(TEXTBOX) || objectType.equalsIgnoreCase(TEXTAREA)) {
+            func_FindObj(ORvalname, ORvalue);
+            actval = elem.getAttribute("value");
+
+        } else if (objectType.equalsIgnoreCase(TEXTELEMENT)
+                || objectType.equalsIgnoreCase(ELEMENT)) {
+            func_FindObj(ORvalname, ORvalue);
+            actval = elem.getText();
+
+        } else if (objectType.equalsIgnoreCase(COMBOBOX) || objectType.equalsIgnoreCase(LISTBOX)) {
+            func_FindObj(ORvalname, ORvalue);
+            // 2016-03-23 Multiple Selected Check Support
+            List<WebElement> selectedList = new Select(elem).getAllSelectedOptions();
+            actval = selectedList.get(0).getText();
+            if (selectedList.size() > 1) {
+                for (int i = 1; i < selectedList.size(); i++) {
+                    actval += ":" + selectedList.get(i).getText();
+                }
+            }
+
+        } else {
+
+            update_Report("property1");
+        }
+        return actval;
+    }
+
+    private static String objectSetIsEnable(String actval, String objectType) throws Exception, IOException {
+        Boolean boolval;
+        if (objectType.equalsIgnoreCase(TEXTBOX) || objectType.equalsIgnoreCase(COMBOBOX)
+                || objectType.equalsIgnoreCase(LISTBOX) || objectType.equalsIgnoreCase(RADIOBUTTON)
+                || objectType.equalsIgnoreCase(BUTTON) || objectType.equalsIgnoreCase("checkbox")
+                || objectType.equalsIgnoreCase(TEXTAREA) || objectType.equalsIgnoreCase("image")
+                || objectType.equalsIgnoreCase("table") || objectType.equalsIgnoreCase("link")
+                || objectType.equalsIgnoreCase(ELEMENT)) {
+            func_FindObj(ORvalname, ORvalue);
+            boolval = elem.isEnabled();
+            actval = boolval.toString();
+        } else {
+            update_Report("property1");
+        }
+        return actval;
+    }
+
+    private static void checkDtValExit(String objectSetValCh) {
+        int dTcolumncountCh;
+        if (objectSetValCh.contains("dt_")) {
+            String objectSetValtableheader[] = objectSetValCh.split("_");
+            int column = 0;
+            String Searchtext = objectSetValtableheader[1];
+            dTcolumncountCh = DTsheet.getRow(0).getLastCellNum();
+            for (column = 0; column < dTcolumncountCh; column++) {
+                if (Searchtext
+                        .equalsIgnoreCase(DTsheet.getRow(0).getCell(column).getStringCellValue()) == true) {
+                    objectSetValCh = DTsheet.getRow(dtrownum).getCell(column).getStringCellValue();
+                    iflag = 1;
+                    if (objectSetValCh.length() == 0) {
+                        objectSetValCh = EMPTY;
+                    }
+                }
+            }
+            if (iflag == 0) {
+                ORvalname = "exit";
+            }
+        }
+    }
+
+    private static String checkDtNoDataRow(String objectSetValCh) {
+        int dTcolumncountCh = 0;
+        if (objectSetValCh.contains("dt_")) {
+            iflag = 0;
+            String ObjectSetValtableheader[] = objectSetValCh.split("_");
+            int column = 0;
+            String Searchtext = ObjectSetValtableheader[1];
+            try {
+                dTcolumncountCh = DTsheet.getRow(0).getLastCellNum();
+            } catch (NullPointerException e) {
+//                            return;
+                LOGGER.log(Level.SEVERE, e.toString());
+            }
+            if(dTcolumncountCh > 0) {
+                for (column = 0; column < dTcolumncountCh; column++) {
+                    if (Searchtext
+                            .equalsIgnoreCase(DTsheet.getRow(0).getCell(column).getStringCellValue())) {
+                        objectSetValCh = DTsheet.getRow(dtrownum).getCell(column).getStringCellValue();
+                        iflag = 1;
+                        if (objectSetValCh.length() == 0) {
+                            objectSetValCh = EMPTY;
+                        }
+                    }
+
+                }
+            }
+            if (iflag == 0) {
+                objectSetValCh = "nodatarow";
+            }
+        }
+        return objectSetValCh;
+    }
+
+    private static void objFound(String objectType, String objectValCh) {
+        if (objectType.equalsIgnoreCase(PAGE) || objectType.equalsIgnoreCase(DIALOG)) {
+            objFoundFlag = 1;
+        } else {
+            for (int k = 0; k <= ORrowcount; k++) {
+                if (((ORsheet.getRow(k).getCell(1).getStringCellValue()).equalsIgnoreCase(objectValCh))) {
+                    String[] oRCellData = ORsheet.getRow(k).getCell(_4).getStringCellValue().split(REGEX_EQUAL, TestConstant._2);
+                    ORvalname = oRCellData[0];
+                    ORvalue = oRCellData[1];
+                    objFoundFlag = 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    private static String getVarValue(String objectSetVal) {
+        if (objectSetVal.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
+            System.out.println("In #");
+            if (map.get(objectSetVal.substring(1, (objectSetVal.length()))) != null) {
+                objectSetVal = map.get(objectSetVal.substring(1, (objectSetVal.length())));
+            } else {
+                objectSetVal = EMPTY;
+            }
+        }
+        return objectSetVal;
+    }
+
+    private static String getVarName(String objectType, String[] dCellDataVal, String objectSetVal) {
+        if (objectType.equalsIgnoreCase(TEXTELEMENT)) {
+            objectSetVal = dCellData.replaceFirst(TEXT_COLON, EMPTY);
+            System.out.println("ObjectSetValCh   is ><> > " + objectSetVal);
+        } else {
+            objectSetVal = getMultiValue(dCellDataVal, objectSetVal);
+        }
+        return objectSetVal;
+    }
+
+    private static String getMultiValue(String[] dCellDataVal, String objectSetVal) {
+        if (dCellDataVal.length == TestConstant._2) {
+            objectSetVal = dCellDataVal[1];
+        }
+        // 2016-03-23 Multiple Selected Check Support
+        else if (dCellDataVal.length > TestConstant._2) {
+            objectSetVal = dCellDataVal[1];
+            for (int i = TestConstant._2; i < dCellDataVal.length; i++) {
+                objectSetVal += ":" + dCellDataVal[i];
+            }
+        }
+        return objectSetVal;
+    }
+
+    // @After
+    public void close() throws Exception {
         try {
             System.out.println("Test end.");
 
@@ -2901,7 +3040,7 @@ public class TestSpringBoot {
                     iFlag = 0;
                 }
             case "equals":
-                if (value1.substring(0, 1).equalsIgnoreCase("#")) {
+                if (value1.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
 
                     value1 = map.get(value1.substring(1, (value1.length())));
                     System.out.println("Variable used in condition statement has value: " + value1);
@@ -2916,7 +3055,7 @@ public class TestSpringBoot {
                 break;
 
             case "notequals":
-                if (value1.substring(0, 1).equalsIgnoreCase("#")) {
+                if (value1.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
                     value1 = map.get(value1.substring(1, (value1.length())));
                     System.out.println("Variable used in condition statement has values: " + value1);
                     if (!value1.trim().equalsIgnoreCase(value2.trim())) {
@@ -2929,7 +3068,7 @@ public class TestSpringBoot {
                 }
                 break;
             case "greaterthan":
-                if (value1.substring(0, 1).equalsIgnoreCase("#")) {
+                if (value1.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
                     value1 = map.get(value1.substring(1, (value1.length())));
                     if (isInteger(value1) && isInteger(value2)) {
                         if (Integer.parseInt(value1) > Integer.parseInt(value2)) {
@@ -2949,7 +3088,7 @@ public class TestSpringBoot {
                 }
                 break;
             case "lessthan":
-                if (value1.substring(0, 1).equalsIgnoreCase("#")) {
+                if (value1.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
                     value1 = map.get(value1.substring(1, (value1.length())));
                     if (isInteger(value1) && isInteger(value2)) {
                         if (Integer.parseInt(value1) < Integer.parseInt(value2)) {
@@ -3017,7 +3156,7 @@ public class TestSpringBoot {
             		update_Report("executed");
                     break;
                     
-                case "switch":
+                case SWITCH:
                 	caseSwitch();
             		update_Report("executed");
                     break;
@@ -3069,12 +3208,12 @@ public class TestSpringBoot {
                 	caseContext();
                     break;
                     
-                case "check":
+                case CHECK:
                     ScreenshotTypeFlag = 0;
                     func_StoreCheck();
                     break;
                     
-                case "storevalue":
+                case STOREVALUE:
                     ScreenshotTypeFlag = 0;
                     func_StoreCheck();
                     break;
@@ -3088,8 +3227,8 @@ public class TestSpringBoot {
                     break;
 
                 case "wait":
-                    cCellObjName = "";// Updated on 16.12.2013 for page support
-                    cCellObjType = "";// Updated on 16.12.2013 for page support
+                    cCellObjName = EMPTY;// Updated on 16.12.2013 for page support
+                    cCellObjType = EMPTY;// Updated on 16.12.2013 for page support
                     dCellDataVal = null;
                     dCellData.toString();
                     Thread.sleep((waitcCellDatanum));
@@ -3100,8 +3239,8 @@ public class TestSpringBoot {
 
                     ScreenshotTypeFlag = 0;
 
-                    cCellObjName = "";// Updated on 16.12.2013 for page support
-                    cCellObjType = "";// Updated on 16.12.2013 for page support
+                    cCellObjName = EMPTY;// Updated on 16.12.2013 for page support
+                    cCellObjType = EMPTY;// Updated on 16.12.2013 for page support
                     dCellDataVal = null;
                     checkContainsSemiColon();
 
@@ -3138,101 +3277,7 @@ public class TestSpringBoot {
                         break;
                     } else if (!(cCellData.toString().equalsIgnoreCase(ScriptName))) {
 
-                        reporttype = 1;
-                        exeStatus = "Pass";
-                        String ComponentPath = reusableComponents + cCellData;
-                        if (cCellData.contains("xlsx")) {
-                            String ComponentName = cCellData.split(".xlsx")[0];
-                            // System.out.println("ComponentName is "+ComponentName);
-                            XSSFSheet TestScriptSheet = TScsheet;
-
-                            FileInputStream ComponentFile1 = null;
-
-                            try {
-                                ComponentFile1 = new FileInputStream(new File(ComponentPath));
-
-                                XSSFWorkbook ComponentWorkBook = new XSSFWorkbook(ComponentFile1);
-
-                                XSSFSheet ComponentSheet = ComponentWorkBook.getSheetAt(0);
-                                int ComponentRowCount = 0;
-                                int introwcnt = 0;
-                                int introwcntStore = j;
-                                update_Report("executed");
-                                j = j + 1;
-                                TScsheet = ComponentSheet;
-                                Stack<String> ComponentStack = new Stack<String>();
-                                globalCompName = ComponentName;
-                                ComponentStack.push(ComponentName);
-                                update_Report("callactionstart");
-
-                                ComponentRowCount = ComponentSheet.getLastRowNum();
-
-                                introwcnt = 0;
-                                for (int jloop = 0; jloop < ComponentRowCount; jloop++) {
-                                    introwcnt = introwcnt + 1;
-                                    j = jloop;
-                                    String CTValidate = "r";
-
-                                    if (((ComponentSheet.getRow(jloop).getCell(0).getStringCellValue())
-                                            .equalsIgnoreCase(CTValidate) == true))
-
-                                    {
-
-                                        // 2016-03-23 Get Cell Value Support(xlsx)
-                                        action = getCellData(ComponentWorkBook,
-                                                ComponentSheet.getRow(jloop).getCell(1));
-                                        cCellData = getCellData(ComponentWorkBook,
-                                                ComponentSheet.getRow(jloop).getCell(2));
-                                        dCellData = getCellData(ComponentWorkBook,
-                                                ComponentSheet.getRow(jloop).getCell(3));
-
-                                        String ORPath = objectRepository;
-                                        FileInputStream ComponentFile2 = null;
-
-                                        try {
-                                            ComponentFile2 = new FileInputStream(new File(ORPath));
-
-                                        } catch (Exception e) {
-                                            System.out.println(
-                                                    " The Action(TestScript) name given is not available in the given path. Check the file path and action name");
-                                        }
-                                        try {
-
-                                            XSSFWorkbook ORworkbook = new XSSFWorkbook(ComponentFile2);
-                                            ORsheet = ORworkbook.getSheetAt(0);
-                                            ORrowcount = ORsheet.getLastRowNum();
-                                            ActionVal = action.toLowerCase();
-                                            iflag = 0;
-                                        } catch (Exception e) {
-
-                                            fail("Excel file of AutoTest is not correct.");
-                                        }
-                                        bCellAction(scriptName);
-                                        /*
-                                         * System.out.println(Action + "||" + cCellData + "||" + dCellData);
-                                         */
-                                        System.out.println((j + 1) + " | " + action + " | " + cCellData + " | "
-                                                + dCellData + " | " + comments);
-
-                                        jloop = j;
-
-                                    }// End of Execution
-                                }// End of If that get all rows in Test Script
-                                System.out.println(
-                                        "The Action(TestScript) name given is not available in the given path. Check the file path and action name");
-                                update_Report("callactionend");
-                                globalCompName = ComponentStack.pop();
-
-                                j = introwcntStore;
-                                reporttype = 0;
-                                TScsheet = TestScriptSheet;
-
-                            } catch (FileNotFoundException FNF1) {
-                                System.out.println(
-                                        "The Action(TestScript) name given is not available in the given path. Check the file path and action name");
-                                update_Report("callactionfnf");
-                            }
-                        }
+                        valueNotEqualScriptName(scriptName);
                     } else {
                         System.out.println(
                                 "The Action(TestScript) name given is not available in the given path. Check the file path and action name");
@@ -3277,9 +3322,107 @@ public class TestSpringBoot {
         }
     }
 
+    private void valueNotEqualScriptName(String scriptName) throws IOException, Exception {
+        reporttype = 1;
+        exeStatus = "Pass";
+        String ComponentPath = reusableComponents + cCellData;
+        if (cCellData.contains("xlsx")) {
+            String ComponentName = cCellData.split(".xlsx")[0];
+            // System.out.println("ComponentName is "+ComponentName);
+            XSSFSheet TestScriptSheet = TScsheet;
+
+            FileInputStream ComponentFile1 = null;
+
+            try {
+                ComponentFile1 = new FileInputStream(new File(ComponentPath));
+
+                XSSFWorkbook ComponentWorkBook = new XSSFWorkbook(ComponentFile1);
+
+                XSSFSheet ComponentSheet = ComponentWorkBook.getSheetAt(0);
+                int ComponentRowCount = 0;
+                int introwcnt = 0;
+                int introwcntStore = j;
+                update_Report("executed");
+                j = j + 1;
+                TScsheet = ComponentSheet;
+                Stack<String> ComponentStack = new Stack<String>();
+                globalCompName = ComponentName;
+                ComponentStack.push(ComponentName);
+                update_Report("callactionstart");
+
+                ComponentRowCount = ComponentSheet.getLastRowNum();
+
+                introwcnt = 0;
+                for (int jloop = 0; jloop < ComponentRowCount; jloop++) {
+                    introwcnt = introwcnt + 1;
+                    j = jloop;
+                    String CTValidate = "r";
+
+                    if (((ComponentSheet.getRow(jloop).getCell(0).getStringCellValue())
+                            .equalsIgnoreCase(CTValidate) == true))
+
+                    {
+
+                        // 2016-03-23 Get Cell Value Support(xlsx)
+                        action = getCellData(ComponentWorkBook,
+                                ComponentSheet.getRow(jloop).getCell(1));
+                        cCellData = getCellData(ComponentWorkBook,
+                                ComponentSheet.getRow(jloop).getCell(2));
+                        dCellData = getCellData(ComponentWorkBook,
+                                ComponentSheet.getRow(jloop).getCell(3));
+
+                        String ORPath = objectRepository;
+                        FileInputStream ComponentFile2 = null;
+
+                        try {
+                            ComponentFile2 = new FileInputStream(new File(ORPath));
+
+                        } catch (Exception e) {
+                            System.out.println(
+                                    " The Action(TestScript) name given is not available in the given path. Check the file path and action name");
+                        }
+                        try {
+
+                            XSSFWorkbook ORworkbook = new XSSFWorkbook(ComponentFile2);
+                            ORsheet = ORworkbook.getSheetAt(0);
+                            ORrowcount = ORsheet.getLastRowNum();
+                            ActionVal = action.toLowerCase();
+                            iflag = 0;
+                        } catch (Exception e) {
+
+                            fail("Excel file of AutoTest is not correct.");
+                        }
+                        bCellAction(scriptName);
+                        /*
+                         * System.out.println(Action + "||" + cCellData + "||" + dCellData);
+                         */
+                        System.out.println((j + 1) + " | " + action + " | " + cCellData + " | "
+                                + dCellData + " | " + comments);
+
+                        jloop = j;
+
+                    }// End of Execution
+                }// End of If that get all rows in Test Script
+                System.out.println(
+                        "The Action(TestScript) name given is not available in the given path. Check the file path and action name");
+                update_Report("callactionend");
+                globalCompName = ComponentStack.pop();
+
+                j = introwcntStore;
+                reporttype = 0;
+                TScsheet = TestScriptSheet;
+
+            } catch (FileNotFoundException FNF1) {
+                System.out.println(
+                        "The Action(TestScript) name given is not available in the given path. Check the file path and action name");
+                update_Report("callactionfnf");
+            }
+        }
+    }
+
 	private void getORValue() {
-		if (!(cCellObjType.equalsIgnoreCase("page") || cCellObjType.equalsIgnoreCase("page;")
-		        || cCellObjType.equalsIgnoreCase("dialog") || cCellObjType.equalsIgnoreCase("dialog;")
+		if (!(cCellObjType.equalsIgnoreCase(PAGE) || cCellObjType.equalsIgnoreCase("page;")
+		        || cCellObjType.equalsIgnoreCase(DIALOG) || cCellObjType.equalsIgnoreCase("dialog;")
 		        || cCellObjType.equalsIgnoreCase("DownloadDialog")
 		        || cCellObjType.equalsIgnoreCase("uploadDialog")) && !cCellData.isEmpty()) // //Updated on
 		                                                                                   // 16.12.2013
@@ -3296,14 +3439,14 @@ public class TestSpringBoot {
 		        {
 		            String[] ORcellData = new String[3];
 
-		            ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split("=", 2);
+		            ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split(REGEX_EQUAL, 2);
 
 		            ORvalname = ORcellData[0];
 
 		            ORvalue = ORsheet.getRow(k).getCell(4).getStringCellValue()
 		                    .substring(ORcellData[0].length() + 1);
 
-		            k = ORrowcount + 1;
+		            break;
 		        }
 		        // else if(){
 		        //
@@ -3322,7 +3465,7 @@ public class TestSpringBoot {
 
 		        if (dCellDataVal.length > 2) {
 		            for (int dCellvalcount = 2; dCellvalcount < dCellDataVal.length; dCellvalcount++) {
-		                if (ObjectSetVal.startsWith("dt_") || ObjectSetVal.startsWith("#"))
+		                if (ObjectSetVal.startsWith("dt_") || ObjectSetVal.startsWith(REGEX_SHARP))
 
 		                {
 		                    update_Report("tooManyArguments");
@@ -3333,8 +3476,8 @@ public class TestSpringBoot {
 		            }
 		        }
 		    } else {
-		        ObjectSet = dCellData.replace(":", "");
-		        ObjectSetVal = "";
+		        ObjectSet = dCellData.replace(":", EMPTY);
+		        ObjectSetVal = EMPTY;
 
 		    }
 		} else {
@@ -3364,8 +3507,8 @@ public class TestSpringBoot {
 	}
 
 	private void caseDownload() {
-		cCellObjName = "";// Updated on 16.12.2013 for page support
-		cCellObjType = "";// Updated on 16.12.2013 for page support
+		cCellObjName = EMPTY;// Updated on 16.12.2013 for page support
+		cCellObjType = EMPTY;// Updated on 16.12.2013 for page support
 		dCellDataVal = null;
 
 		checkContainsSemiColon();
@@ -3375,8 +3518,8 @@ public class TestSpringBoot {
 
 		    DTcolumncount = DTsheet.getRow(0).getLastCellNum();
 
-		if (!(cCellObjType.equalsIgnoreCase("page") || cCellObjType.equalsIgnoreCase("page;")
-		        || cCellObjType.equalsIgnoreCase("dialog") || cCellObjType.equalsIgnoreCase("dialog;")
+		if (!(cCellObjType.equalsIgnoreCase(PAGE) || cCellObjType.equalsIgnoreCase("page;")
+		        || cCellObjType.equalsIgnoreCase(DIALOG) || cCellObjType.equalsIgnoreCase("dialog;")
 		        || cCellObjType.equalsIgnoreCase("DownloadDialog")
 		        || cCellObjType.equalsIgnoreCase("uploadDialog"))) // //Updated on
 		                                                           // 16.12.2013
@@ -3393,7 +3536,7 @@ public class TestSpringBoot {
 		        {
 		            String[] ORcellData = new String[3];
 
-		            ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split("=");
+		            ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split(REGEX_EQUAL);
 
 		            ORvalname = ORcellData[0];
 		            ORvalue = ORsheet.getRow(k).getCell(4).getStringCellValue()
@@ -3409,7 +3552,7 @@ public class TestSpringBoot {
 		    readAttributeforPerform();
 		    func_FindObj(ORvalname, ORvalue);
 		    if (elem != null) {
-		        if (ObjectSet == "") {
+		        if (ObjectSet == EMPTY) {
 
 		            update_Report("filePathNotFound2");
 		        } else {
@@ -3433,7 +3576,7 @@ public class TestSpringBoot {
 		                update_Report("filePathNotFound1");
 
 		            }
-		            ObjectSet2 = "";
+		            ObjectSet2 = EMPTY;
 		            ObjectSet1 = null;
 		        }
 
@@ -3446,7 +3589,7 @@ public class TestSpringBoot {
 	}
 
 	private void caseUpload() throws IOException, Exception {
-		if (cCellData.toString() == "") {
+		if (cCellData.toString() == EMPTY) {
 
 		    update_Report("filePathNotFound2");
 		    doUploadDownload("abortupload");
@@ -3490,8 +3633,8 @@ public class TestSpringBoot {
 	}
 
 	private void caseContext() throws IOException, Exception {
-		cCellObjName = "";// Updated on 16.12.2013 for page support
-		cCellObjType = "";// Updated on 16.12.2013 for page support
+		cCellObjName = EMPTY;// Updated on 16.12.2013 for page support
+		cCellObjType = EMPTY;// Updated on 16.12.2013 for page support
 		dCellDataVal = null;
 		int frameindex = 0;
 		if (cCellData.contains(";")) // Updated on 16.12.2013 for page
@@ -3521,7 +3664,7 @@ public class TestSpringBoot {
 		        }
 		        // 2015-06-23 <--- condition changed�E�Eotext|dialog;�E�E
 		        if ((!windowType.equalsIgnoreCase("dialog;"))
-		                && ((windowType.equalsIgnoreCase("page") || windowType.equalsIgnoreCase("page;"))
+		                && ((windowType.equalsIgnoreCase(PAGE) || windowType.equalsIgnoreCase("page;"))
 		                        && !dCellData.contains("::")
 		                        || !windowType.equalsIgnoreCase("page;WindowRtn;"))) {
 		            notEqualDialogPage(windowType);
@@ -3531,7 +3674,7 @@ public class TestSpringBoot {
 		            // 2015-06-18 --->
 		        }
 
-		        if ((windowType.equalsIgnoreCase("dialog") || windowType.equalsIgnoreCase("dialog;"))) {
+		        if ((windowType.equalsIgnoreCase(DIALOG) || windowType.equalsIgnoreCase("dialog;"))) {
 		            D8.switchTo().alert();
 		            update_Report("executed");
 
@@ -3571,9 +3714,9 @@ public class TestSpringBoot {
 		        .equalsIgnoreCase(ObjectSetVal) == true) {
 		    update_Report("executed"); // 2015-08-19 Add
 		} else {
-		    if (!((ObjectSetVal.equalsIgnoreCase("page")
+		    if (!((ObjectSetVal.equalsIgnoreCase(PAGE)
 		            || (ObjectSetVal.equalsIgnoreCase("page;")))
-		            || (ObjectSetVal.toString() == ""))) {
+		            || (ObjectSetVal.toString() == EMPTY))) {
 		        if (D8.getTitle().toString().equalsIgnoreCase(ObjectSetVal) == false) {
 		            for (windowItr = 0; windowItr < windowNums; windowItr++) {
 
@@ -3651,12 +3794,12 @@ public class TestSpringBoot {
 		    dCellDataVal = dCellData.split(";");
 		    windowType = dCellDataVal[0];
 		    ObjectSetVal = dCellDataVal[1]; // 2015-06-17
-		    if (ObjectSetVal.substring(0, 1).equalsIgnoreCase("#")) {
+		    if (ObjectSetVal.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
 		        if (map.get(ObjectSetVal.substring(1, (ObjectSetVal.length()))) != null) {
 		            ObjectSetVal = map.get(ObjectSetVal.substring(1, (ObjectSetVal.length())));
 
 		        } else {
-		            ObjectSetVal = "";
+		            ObjectSetVal = EMPTY;
 		        }
 		        // data table check Add 2015-08-19 --->
 		    } else if (ObjectSetVal.contains("dt_")) {
@@ -3677,7 +3820,7 @@ public class TestSpringBoot {
 		                        .getStringCellValue();
 
 		                if (ObjectSetVal.length() == 0) {
-		                    ObjectSetVal = "";
+		                    ObjectSetVal = EMPTY;
 		                }
 		                iflag = 1;
 		            }
@@ -3737,7 +3880,7 @@ public class TestSpringBoot {
 		                String[] ORcellData = new String[3];
 
 		                ORcellData = ((ORsheet.getRow(k).getCell(4).getStringCellValue())
-		                        .split("="));
+		                        .split(REGEX_EQUAL));
 
 		                ORvalname = ORcellData[0];
 
@@ -3784,7 +3927,7 @@ public class TestSpringBoot {
 		        {
 		            String[] ORcellData = new String[3];
 
-		            ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split("=");
+		            ORcellData = ORsheet.getRow(k).getCell(4).getStringCellValue().split(REGEX_EQUAL);
 
 		            ORvalname = ORcellData[0];
 
@@ -3918,10 +4061,10 @@ public class TestSpringBoot {
 		    if (sco[s].equalsIgnoreCase("perform")) {
 		        captureperform = true;
 		    }
-		    if (sco[s].equalsIgnoreCase("storevalue")) {
+		    if (sco[s].equalsIgnoreCase(STOREVALUE)) {
 		        capturestorevalue = true;
 		    }
-		    if (sco[s].equalsIgnoreCase("check")) {
+		    if (sco[s].equalsIgnoreCase(CHECK)) {
 		        capturecheckvalue = true;
 		    }
 
@@ -4039,7 +4182,7 @@ public class TestSpringBoot {
             case BOOLEAN:
                 cellStr = String.valueOf(tCell.getBooleanCellValue());
             default:
-                cellStr = "";
+                cellStr = EMPTY;
         }
         return cellStr;
     }
@@ -4048,7 +4191,7 @@ public class TestSpringBoot {
         try {
             String[] cCellDataValCh = cCellData.split(";");
             String objectType = cCellDataValCh[0];
-            String ObjectValCh = "";
+            String ObjectValCh = EMPTY;
             ObjectValCh = cCellDataValCh[1];
 
             for (int k = 0; k < ORrowcount; k++) {
@@ -4058,12 +4201,12 @@ public class TestSpringBoot {
                 {
                     String[] ORcellData = new String[3];
 
-                    ORcellData = (ORsheet.getRow(k).getCell(4).getStringCellValue().split("=", 2));
+                    ORcellData = (ORsheet.getRow(k).getCell(4).getStringCellValue().split(REGEX_EQUAL, 2));
 
                     ORvalname = ORcellData[0];
                     ORvalue = ORcellData[1];
-                    k = ORrowcount + 1;
                     objFoundFlag = 1;
+                    break;
                 }
 
             }
@@ -4090,18 +4233,11 @@ public class TestSpringBoot {
     public void readAttributeforPerform() throws Exception {
         try {
             if (ObjectSetVal.length() > 0) {                                                                // //Function
-                                                                                                            // was
-                                                                                                            // updated
-                                                                                                            // on
-                                                                                                            // 16.12.2013
-                                                                                                            // for
-                                                                                                            // supporting
-                                                                                                            // page,
-                if (ObjectSetVal.substring(0, 1).equalsIgnoreCase("#")) {
+                if (ObjectSetVal.substring(0, 1).equalsIgnoreCase(REGEX_SHARP)) {
                     if (map.get(ObjectSetVal.substring(1, (ObjectSetVal.length()))) != null) {
                         ObjectSetVal = map.get(ObjectSetVal.substring(1, (ObjectSetVal.length())));
                     } else {
-                        ObjectSetVal = "";
+                        ObjectSetVal = EMPTY;
                     }
                 } else if (ObjectSetVal.contains("dt_")) {
                     iflag = 0;
@@ -4113,7 +4249,7 @@ public class TestSpringBoot {
                                 .equalsIgnoreCase(DTsheet.getRow(0).getCell(column).getStringCellValue()) == true) {
                             ObjectSetVal = DTsheet.getRow(dtrownum).getCell(column).getStringCellValue();
                             if (ObjectSetVal.length() == 0) {
-                                ObjectSetVal = "";
+                                ObjectSetVal = EMPTY;
                             }
                             iflag = 1;
                         }
@@ -4135,8 +4271,8 @@ public class TestSpringBoot {
 
     public void dCellAction() throws Exception {
 
-        if (!(cCellObjType.equalsIgnoreCase("page") || cCellObjType.equalsIgnoreCase("page;")
-                || cCellObjType.equalsIgnoreCase("dialog") || cCellObjType.equalsIgnoreCase("dialog;")
+        if (!(cCellObjType.equalsIgnoreCase(PAGE) || cCellObjType.equalsIgnoreCase("page;")
+                || cCellObjType.equalsIgnoreCase(DIALOG) || cCellObjType.equalsIgnoreCase("dialog;")
                 || cCellObjType.equalsIgnoreCase("downloaddialog") || cCellObjType.equalsIgnoreCase("downloaddialog;")
                 || cCellObjType.equalsIgnoreCase("uploaddialog") || cCellObjType.equalsIgnoreCase("uploaddialog;")))// Updated
                                                                                                                     // on
@@ -4351,7 +4487,7 @@ public class TestSpringBoot {
                 } else if (!ObjectSet.toLowerCase().startsWith("sikuli")) {
                     switch (ObjectSet.toLowerCase()) {
                         case "set":
-                            if (objectType.equalsIgnoreCase("textbox") || objectType.equalsIgnoreCase("textarea")) {
+                            if (objectType.equalsIgnoreCase(TEXTBOX) || objectType.equalsIgnoreCase(TEXTAREA)) {
 
                                 elem.clear();
                                 StringBuffer inputvalue = new StringBuffer();
@@ -4376,7 +4512,7 @@ public class TestSpringBoot {
                             }
                             break;
                         case "listselect":
-                            if (objectType.equalsIgnoreCase("listbox")) {
+                            if (objectType.equalsIgnoreCase(LISTBOX)) {
                                 int foundCount = 0;
                                 String[] listvalues = ObjectSetVal.split(":");
                                 List<WebElement> listboxitems = elem.findElements(By.tagName("option"));
@@ -4394,7 +4530,7 @@ public class TestSpringBoot {
 
                                         }
                                     }
-                                    if (foundCount == 0 && ObjectSetVal.contains(""))
+                                    if (foundCount == 0 && ObjectSetVal.contains(EMPTY))
 
                                     {
                                         update_Report("NoBlankAvailable");
@@ -4414,8 +4550,8 @@ public class TestSpringBoot {
                             break;
 
                         case "select":
-                            if (objectType.equalsIgnoreCase("combobox")) {
-                                if (ObjectSetVal != "") {
+                            if (objectType.equalsIgnoreCase(COMBOBOX)) {
+                                if (ObjectSetVal != EMPTY) {
                                     new Select(elem).selectByVisibleText(ObjectSetVal);
                                     update_Report("executed", ObjectSet, ObjectSetVal);
                                 } else if (ObjectSetVal == "nodatarow") {
@@ -4423,9 +4559,9 @@ public class TestSpringBoot {
                                 }
 
                                 else {
-                                    if (new Select(elem).getOptions().toString().contains("") == true) {
+                                    if (new Select(elem).getOptions().toString().contains(EMPTY) == true) {
                                         try {
-                                            new Select(elem).selectByVisibleText("");
+                                            new Select(elem).selectByVisibleText(EMPTY);
                                             update_Report("executed", ObjectSet, ObjectSetVal);
                                         } catch (Exception e) {
                                             update_Report("NoBlankAvailable");
@@ -4444,14 +4580,14 @@ public class TestSpringBoot {
 
                             break;
 
-                        case "check":
+                        case CHECK:
 
                             if (ObjectSetVal == "nodatarow") {
                                 update_Report("missing");
                             } else {
 
                                 if (objectType.equalsIgnoreCase("checkbox")) {
-                                    if (elem.isSelected() && ObjectSetVal.equalsIgnoreCase("On")) {
+                                    if (elem.isSelected() && ObjectSetVal.equalsIgnoreCase(ON)) {
                                         update_Report("executed", ObjectSet, ObjectSetVal);
 
                                     } else if ((elem.isSelected() && ObjectSetVal.equalsIgnoreCase("off"))) {
@@ -4588,7 +4724,7 @@ public class TestSpringBoot {
 
                     case "ok":// Updated on 16.12.2013 for dialog support
                         ScreenshotTypeFlag = 1;
-                        if (cCellObjType.equalsIgnoreCase("dialog") || cCellObjType.equalsIgnoreCase("dialog;")) {
+                        if (cCellObjType.equalsIgnoreCase(DIALOG) || cCellObjType.equalsIgnoreCase("dialog;")) {
                             dialogSwitch = D8.switchTo().alert();
                             dialogSwitch.accept();
                             update_Report("executed");
@@ -4601,7 +4737,7 @@ public class TestSpringBoot {
                     case "cancel":// Updated on 16.12.2013 for dialog support
                         ScreenshotTypeFlag = 1;
 
-                        if (cCellObjType.equalsIgnoreCase("dialog") || cCellObjType.equalsIgnoreCase("dialog;")) {
+                        if (cCellObjType.equalsIgnoreCase(DIALOG) || cCellObjType.equalsIgnoreCase("dialog;")) {
                             dialogSwitch = D8.switchTo().alert();
                             dialogSwitch.dismiss();
                             update_Report("executed");
@@ -4616,7 +4752,7 @@ public class TestSpringBoot {
                                  // support
                         ScreenshotTypeFlag = 1;
 
-                        if (cCellObjType.equalsIgnoreCase("dialog") || cCellObjType.equalsIgnoreCase("dialog;")) {
+                        if (cCellObjType.equalsIgnoreCase(DIALOG) || cCellObjType.equalsIgnoreCase("dialog;")) {
 
                             dialogSwitch = D8.switchTo().alert();
                             dialogSwitch.dismiss();
@@ -4637,7 +4773,7 @@ public class TestSpringBoot {
                             al = D8.getWindowHandles();
                             windowNums = al.size();
                             Iterator<String> windowIterator = al.iterator();
-                            if (cCellObjName.equalsIgnoreCase("page;") || cCellObjName.equalsIgnoreCase("page")) {
+                            if (cCellObjName.equalsIgnoreCase("page;") || cCellObjName.equalsIgnoreCase(PAGE)) {
                                 if (windowNums == 1) {
                                     if (captureperform == true) {
                                         screenShot(loopnum, TScrowcount, TScname);
@@ -4692,7 +4828,7 @@ public class TestSpringBoot {
                                     }
 
                                 } else {
-                                    if (cCellObjType.equalsIgnoreCase("page")
+                                    if (cCellObjType.equalsIgnoreCase(PAGE)
                                             && D8.getTitle().equalsIgnoreCase(cCellObjName) == false) {
                                         for (windowItr = 0; windowItr < windowNums; windowItr++) {
                                             windowHandle = windowIterator.next();
@@ -4711,7 +4847,7 @@ public class TestSpringBoot {
                                         }
 
                                     } else {
-                                        if (cCellObjType.equalsIgnoreCase("page")
+                                        if (cCellObjType.equalsIgnoreCase(PAGE)
                                                 && D8.getTitle().toString().equalsIgnoreCase(cCellObjName) == true) {
 
                                             int winItr1 = 0;
@@ -4943,12 +5079,12 @@ public class TestSpringBoot {
         WebElement titleYear = null;
         WebElement daytoClick = null;
         int titleYearnum = 0;
-        String titleMonthString = "";
+        String titleMonthString = EMPTY;
         WebElement titleMonth = null;
-        String datePickerType = "";
-        String locatorNext = "";
-        String locatorPrev = "";
-        String outerHTMLCalendar = "";
+        String datePickerType = EMPTY;
+        String locatorNext = EMPTY;
+        String locatorPrev = EMPTY;
+        String outerHTMLCalendar = EMPTY;
         outerHTMLCalendar = elem.getAttribute("outerHTML");
         elem.click();
         int setmm = Integer.parseInt(mm2);
@@ -5537,7 +5673,7 @@ public class TestSpringBoot {
                                         + locatorPrev + "')]" + "/following::a[contains(text(),'" + 15 + "')]");
 
                                 for (WebElement categoryDecider : categoryDeciders) {
-                                    if (categoryDecider.getAttribute("href").endsWith("#")
+                                    if (categoryDecider.getAttribute("href").endsWith(REGEX_SHARP)
                                             && categoryDecider.getText().equals("15")) {
                                         realCategoryDeciders.add(categoryDecider);
                                         dateClass = categoryDecider.getAttribute("class");
@@ -5548,7 +5684,7 @@ public class TestSpringBoot {
                                 for (int i2 = 0; i2 < daystoClick.size(); i2++) {
 
                                     if (today == setdd && Integer.parseInt(daystoClick.get(i2).getText()) == setdd
-                                            && daystoClick.get(i2).getAttribute("href").endsWith("#")) {
+                                            && daystoClick.get(i2).getAttribute("href").endsWith(REGEX_SHARP)) {
 
                                         daytoClick = daystoClick.get(i2);
                                         daytoClick.click();
@@ -5563,7 +5699,7 @@ public class TestSpringBoot {
                                             .get(i2).getAttribute("class").equalsIgnoreCase(dateClass)
                                             || (daystoClick.get(i2).getAttribute("class")
                                                     .equalsIgnoreCase(selectedDateClass))
-                                                    && daystoClick.get(i2).getAttribute("href").endsWith("#"))) {
+                                                    && daystoClick.get(i2).getAttribute("href").endsWith(REGEX_SHARP))) {
 
                                         daytoClick = daystoClick.get(i2);
                                         daytoClick.click();
@@ -5655,7 +5791,7 @@ public class TestSpringBoot {
                 }
 
                 try {
-                    titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                    titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
 
                 }
 
@@ -5800,7 +5936,7 @@ public class TestSpringBoot {
                             monthnum1++;
                             if (monthnum1 == 13)
                                 monthnum1 = 1;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5825,7 +5961,7 @@ public class TestSpringBoot {
                             monthnum1--;
                             if (monthnum1 == 0)
                                 monthnum1 = 12;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5849,7 +5985,7 @@ public class TestSpringBoot {
                             monthnum1--;
                             if (monthnum1 == 0)
                                 monthnum1 = 12;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5871,7 +6007,7 @@ public class TestSpringBoot {
                             monthnum1++;
                             if (monthnum1 == 13)
                                 monthnum1 = 1;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5896,7 +6032,7 @@ public class TestSpringBoot {
                             monthnum1++;
                             if (monthnum1 == 13)
                                 monthnum1 = 1;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5918,7 +6054,7 @@ public class TestSpringBoot {
                             monthnum1--;
                             if (monthnum1 == 0)
                                 monthnum1 = 12;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5941,7 +6077,7 @@ public class TestSpringBoot {
                             monthnum1++;
                             if (monthnum1 == 13)
                                 monthnum1 = 1;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
@@ -5963,7 +6099,7 @@ public class TestSpringBoot {
                             monthnum1--;
                             if (monthnum1 == 0)
                                 monthnum1 = 12;
-                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + "switch" + "')]");
+                            titleDefault = D8.findElementByXPath("//th[contains(@class,'" + SWITCH + "')]");
                             titleDefaultText = titleDefault.getText().trim();
                             titleLength = titleDefaultText.length();
                             titleYearnum = Integer.parseInt(titleDefaultText.substring(titleLength - 4));
